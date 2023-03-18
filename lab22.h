@@ -51,14 +51,22 @@ class Unit{
 		void equip(Equipment *);  
 };
 void Unit::equip(Equipment *item){
-	vector <int> stat_old =equipment->getStat();
-	hpmax-=stat_old[0];
-	atk
-	def
-	vector <int> stat =item->getStat();
+	if(equipment != 0){
+		vector <int> stat_old = equipment->getStat();
+		hpmax-=stat_old[0];
+		atk-=stat_old[1];
+		def-=stat_old[2];
+		if(hp >hpmax){
+			hp = hpmax ;
+		}
+	}
+	vector <int> stat = item->getStat();
 	hpmax+=stat[0];
-	atk
-	def
+	atk+=stat[1];
+	def+=stat[2];
+	equipment = item;
+	
+	
 }
 
 void Unit::dodge(){
